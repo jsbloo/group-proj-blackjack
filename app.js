@@ -1,6 +1,7 @@
 'use strict'
 
 //variables
+let balance = 1000.0;
 let total = 0;
 let locked = 0;
 let cardArr = [];
@@ -24,7 +25,7 @@ const combineCards = () => {
   let pull = getRandomCard();
   cardArr.push(pull);
   total += pull;
-  if (total > 21) {
+  if (total > 21) {  
     total = "Try Again";
     return "You Bust!";
   }
