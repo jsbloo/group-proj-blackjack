@@ -16,26 +16,17 @@
 <body>
     <nav class="navbar bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand text-light" href="#">
-            <img src="./images/blackjack.png" alt="" width="32" height="32" class="d-inline-block align-text-top">
-            Blackjack
-          </a>
+            <a class="navbar-brand text-light" href="#">
+                <img src="./images/blackjack.png" alt="" width="32" height="32" class="d-inline-block align-text-top">
+                Blackjack
+            </a>
         </div>
-      </nav>
-
-    <section class="cashBalance">
-        <div class="input-group mb-3">
-            <span class="input-group-text">$</span>
-            <span class="input-group-text">0.00</span>
-            <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-          </div>
-    </section>  
-      
+    </nav>
     <section class="gameSection">
         <div class="playerHand">
             <p id="drawnCard"></p>
             <p id="totalScore"></p>
-        </div>  
+        </div>
         <div>
             <p id="dealerDrawnCard"></p>
             <p id="dealerScore"></p>
@@ -47,6 +38,12 @@
             <button type="button" class="btn btn-warning" id="standBtn">Stand</button>
             <br>
             <button type="button" class="btn btn-danger" id="newBtn">New Game</button>
+            <button type="button" class="btn btn-info" id="add1Btn">Bet £1</button>
+            <div> 
+                Balance: £<p id="balanceId">1000</p>
+            </div>
+            <div> Current bet:
+                 <p id="currentBetId">0</p></div>
         </div>
     </section>
 
