@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 //variables
 let total = 0;
@@ -26,6 +26,7 @@ const combineCards = () => {
   total += pull;
   if (total > 21) {
     total = "Try Again";
+    drawBtn.setAttribute("disabled", true);
     return "You Bust!";
   }
   return "your pulled cards: " + cardArr;
@@ -33,27 +34,27 @@ const combineCards = () => {
 
 //dealer bot
 const dealer = () => {
-    let dealerTotal = 0;
-    while(dealerTotal < total && dealerTotal <= 21){
-        const pulled = getRandomCard();
-        dealerTotal += pulled;
-        dealerArr.push(pulled);
-        dealerDrawnElement.innerHTML = "dealer pulled cards: " + dealerArr;
-        dealerScoreElement.innerHTML = dealerTotal;
-        setTimeout(1000);
-    }
-    if(dealerTotal > 21){
-        gameResultElement.innerHTML = "Dealer bust, you win!"
-        return;
-    }
-    if(dealerTotal == total){
-        gameResultElement.innerHTML = "Tie game!";
-        return;
-    }
-    
-    gameResultElement.innerHTML = "Dealer Wins!";
+  let dealerTotal = 0;
+  while (dealerTotal < total && dealerTotal <= 21) {
+    const pulled = getRandomCard();
+    dealerTotal += pulled;
+    dealerArr.push(pulled);
+    dealerDrawnElement.innerHTML = "dealer pulled cards: " + dealerArr;
+    dealerScoreElement.innerHTML = dealerTotal;
+    setTimeout(1000);
+  }
+  if (dealerTotal > 21) {
+    gameResultElement.innerHTML = "Dealer bust, you win!";
     return;
-}
+  }
+  if (dealerTotal == total) {
+    gameResultElement.innerHTML = "Tie game!";
+    return;
+  }
+
+  gameResultElement.innerHTML = "Dealer Wins!";
+  return;
+};
 
 //event listeners
 document.getElementById("drawBtn").addEventListener("click", () => {
@@ -62,9 +63,9 @@ document.getElementById("drawBtn").addEventListener("click", () => {
 });
 
 document.getElementById("standBtn").addEventListener("click", () => {
-    locked = total;
-    drawBtn.setAttribute("disabled",true);
-    dealer();
+  locked = total;
+  drawBtn.setAttribute("disabled", true);
+  dealer();
 });
 
 document.getElementById("newBtn").addEventListener("click", () => {
