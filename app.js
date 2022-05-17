@@ -18,6 +18,7 @@ const dealerDrawnElement = document.getElementById("dealerDrawnCard");
 const balanceElement = document.getElementById("balanceId");
 const currentBet = document.getElementById("currentBetId");
 const standBtn = document.getElementById("standBtn");
+const betBtn = document.getElementById("add1Btn");
 
 //very simple function, to get random 'card' can be made more complex
 const getRandomCard = () => {
@@ -65,6 +66,7 @@ const dealer = () => {
 
 //event listeners
 document.getElementById("drawBtn").addEventListener("click", () => {
+    betBtn.setAttribute("disabled",true);
     (drawnCardDisplay.innerHTML = combineCards()),
     (totalScoreDisplay.innerHTML = total);
 });
@@ -89,6 +91,7 @@ document.getElementById("newBtn").addEventListener("click", () => {
 
     standBtn.removeAttribute("disabled");
     drawBtn.removeAttribute("disabled");
+    betBtn.removeAttribute("disabled");
     bet = 0;
     currentBet.innerHTML = 0;
     balanceElement.innerHTML= balance;
@@ -99,5 +102,4 @@ document.getElementById("add1Btn").addEventListener("click", () => {
     balance-=1;
     currentBet.innerHTML = bet;
     balanceElement.innerHTML = balance;
-    
 });
