@@ -10,20 +10,20 @@ const drawBtn = document.getElementById("drawBtn");
 
 //very simple function, to get random 'card' can be made more complex
 const getRandomCard = () => {
-    return (Math.floor(Math.random() * 11) + 1); 
-}
+  return Math.floor(Math.random() * 11) + 1;
+};
 
 //pull a card, adds it to array and checks for >21
 const combineCards = () => {
-    let pull = getRandomCard();
-    cardArr.push(pull);
-    total += pull;
-    if(total > 21){
-        total = "Try Again";
-        return "You Bust!";
-    }
-    return  "pulled cards: " + cardArr;
-}
+  let pull = getRandomCard();
+  cardArr.push(pull);
+  total += pull;
+  if (total > 21) {
+    total = "Try Again";
+    return "You Bust!";
+  }
+  return "pulled cards: " + cardArr;
+};
 
 // const standFunction = () =>{
 //     locked = total;
@@ -48,11 +48,15 @@ const dealer = () => {
 
 //event listeners
 document.getElementById("drawBtn").addEventListener("click", () => {
-    drawnCardDisplay.innerHTML =  combineCards(),
-        totalScoreDisplay.innerHTML = total;
+  (drawnCardDisplay.innerHTML = combineCards()),
+    (totalScoreDisplay.innerHTML = total);
 });
 
 document.getElementById("standBtn").addEventListener("click", () => {
     locked = total;
     drawBtn.setAttribute("disabled",true);
+});
+
+document.getElementById("newBtn").addEventListener("click", () => {
+  window.location.reload();
 });
