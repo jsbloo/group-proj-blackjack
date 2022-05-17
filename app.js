@@ -9,7 +9,7 @@ const totalScoreDisplay = document.getElementById("totalScore");
 
 //very simple function, to get random 'card' can be made more complex
 const getRandomCard = () => {
-  return Math.floor(Math.random() * 11) + 1;
+  return Math.floor(Math.random() * 11 + 1);
 };
 
 //pull a card, adds it to array and checks for >21
