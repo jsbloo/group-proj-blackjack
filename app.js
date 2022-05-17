@@ -1,12 +1,18 @@
+'use strict'
+
 //variables
 let total = 0;
 let locked = 0;
 let cardArr = [];
+let dealerArr = [];
 
 //dom elements
 const drawnCardDisplay = document.getElementById("drawnCard");
 const totalScoreDisplay = document.getElementById("totalScore");
 const drawBtn = document.getElementById("drawBtn");
+const dealerScoreElement = document.getElementById("dealerScore");
+const gameResultElement = document.getElementById("gameResult");
+const dealerDrawnElement = document.getElementById("dealerDrawnCard");
 
 //very simple function, to get random 'card' can be made more complex
 const getRandomCard = () => {
@@ -22,28 +28,31 @@ const combineCards = () => {
     total = "Try Again";
     return "You Bust!";
   }
-  return "pulled cards: " + cardArr;
+  return "your pulled cards: " + cardArr;
 };
-
-// const standFunction = () =>{
-//     locked = total;
-//     drawBtn.setAttribute("disabled",true);
-// }
 
 //dealer bot
 const dealer = () => {
     let dealerTotal = 0;
-    while(dealerTotal<total){
-        dealerTotal += getRandomCard();
+    while(dealerTotal < total && dealerTotal <= 21){
+        const pulled = getRandomCard();
+        dealerTotal += pulled;
+        dealerArr.push(pulled);
+        dealerDrawnElement.innerHTML = "dealer pulled cards: " + dealerArr;
+        dealerScoreElement.innerHTML = dealerTotal;
+        setTimeout(1000);
     }
     if(dealerTotal > 21){
-        return "Dealer bust, you win!";
+        gameResultElement.innerHTML = "Dealer bust, you win!"
+        return;
     }
     if(dealerTotal == total){
-        return "Tie game!";
+        gameResultElement.innerHTML = "Tie game!";
+        return;
     }
     
-    return "Dealer wins!"
+    gameResultElement.innerHTML = "Dealer Wins!";
+    return;
 }
 
 //event listeners
@@ -55,6 +64,7 @@ document.getElementById("drawBtn").addEventListener("click", () => {
 document.getElementById("standBtn").addEventListener("click", () => {
     locked = total;
     drawBtn.setAttribute("disabled",true);
+    dealer();
 });
 
 document.getElementById("newBtn").addEventListener("click", () => {
