@@ -24,6 +24,22 @@ const combineCards = () => {
     return  "pulled cards: " + cardArr;
 }
 
+//dealer bot
+const dealer = () => {
+    let dealerTotal = 0;
+    while(dealerTotal<total){
+        dealerTotal += getRandomCard();
+    }
+    if(dealerTotal > 21){
+        return "Dealer bust, you win!";
+    }
+    if(dealerTotal == total){
+        return "Tie game!";
+    }
+    
+    return "Dealer wins!"
+}
+
 //event listeners
 document.getElementById("drawBtn").addEventListener("click", () => {
     drawnCardDisplay.innerHTML =  combineCards(),
