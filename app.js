@@ -6,6 +6,7 @@ let cardArr = [];
 //dom elements
 const drawnCardDisplay = document.getElementById("drawnCard");
 const totalScoreDisplay = document.getElementById("totalScore");
+const drawBtn = document.getElementById("drawBtn");
 
 //very simple function, to get random 'card' can be made more complex
 const getRandomCard = () => {
@@ -23,6 +24,11 @@ const combineCards = () => {
     }
     return  "pulled cards: " + cardArr;
 }
+
+// const standFunction = () =>{
+//     locked = total;
+//     drawBtn.setAttribute("disabled",true);
+// }
 
 //dealer bot
 const dealer = () => {
@@ -46,4 +52,7 @@ document.getElementById("drawBtn").addEventListener("click", () => {
         totalScoreDisplay.innerHTML = total;
 });
 
-document.getElementById("standBtn").addEventListener("click", () => {locked = total;});
+document.getElementById("standBtn").addEventListener("click", () => {
+    locked = total;
+    drawBtn.setAttribute("disabled",true);
+});
